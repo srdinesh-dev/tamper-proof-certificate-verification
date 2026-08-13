@@ -1,8 +1,16 @@
+const dns = require("dns");
+
+dns.setServers(["1.1.1.1"]);
+
 const express = require("express");
 const cors = require("cors");
 require("dotenv").config();
 
+const connectDB = require("./config/db");
+
 const app = express();
+
+connectDB();
 
 app.use(cors());
 app.use(express.json());
