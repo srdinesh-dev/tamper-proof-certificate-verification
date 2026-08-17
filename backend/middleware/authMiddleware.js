@@ -1,6 +1,6 @@
 const jwt = require("jsonwebtoken");
 
-const protect = (req, res, next) => {
+const authMiddleware = (req, res, next) => {
     try {
         const authHeader = req.headers.authorization;
 
@@ -29,6 +29,12 @@ const protect = (req, res, next) => {
 
 const authorize = (...roles) => {
     return (req, res, next) => {
+        if (!req.user) {
+            return res.status(401).json({
+                message: "Authentication required",
+            });
+        }
+
         if (!roles.includes(req.user.role)) {
             return res.status(403).json({
                 message: "Access denied",
@@ -40,6 +46,6 @@ const authorize = (...roles) => {
 };
 
 module.exports = {
-    protect,
+    authMiddleware,
     authorize,
 };
