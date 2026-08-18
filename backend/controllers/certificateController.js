@@ -16,8 +16,8 @@ const generateHash = (data) => {
 const generateCertificatePdf = async (certificate) => {
     const certificateId = certificate.certificateId
 
-    const verificationUrl =
-      `http://10.158.155.101:5173/?certificateId=${certificateId}`;
+   const verificationUrl =
+    `https://tamper-proof-certificate-verificati.vercel.app/?certificateId=${certificateId}`;
 
     const qrCodeDataUrl = await QRCode.toDataURL(
         verificationUrl,
@@ -470,8 +470,8 @@ const issueCertificate = async (req, res) => {
                 previousHash
             })
 
-        const verificationUrl =
-`http://10.158.155.101:5173/?certificateId=${certificateId}`;
+       const verificationUrl =
+    `https://tamper-proof-certificate-verificati.vercel.app/?certificateId=${certificateId}`;
 
         const qrCodeDataUrl =
             await QRCode.toDataURL(
