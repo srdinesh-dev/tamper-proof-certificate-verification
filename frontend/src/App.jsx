@@ -31,7 +31,7 @@ function VerificationPage() {
 
     try {
       const response = await fetch(
-        `http://localhost:5000/api/verify/${certificateId.trim()}`
+        `https://certiverify-backend-dpaz.onrender.com/api/verify/${certificateId.trim()}`
       )
 
       const data = await response.json()
@@ -203,7 +203,7 @@ function LoginPage() {
 
     try {
       const response = await fetch(
-        "http://localhost:5000/api/auth/login",
+        "https://certiverify-backend-dpaz.onrender.com/api/auth/login",
         {
           method: "POST",
           headers: {
@@ -304,7 +304,7 @@ function RegisterPage() {
 
     try {
       const response = await fetch(
-        "http://localhost:5000/api/auth/register",
+        "https://certiverify-backend-dpaz.onrender.com/api/auth/register",
         {
           method: "POST",
           headers: {
@@ -421,7 +421,7 @@ function DashboardPage() {
 
     try {
       const response = await fetch(
-        "http://localhost:5000/api/certificates",
+        "https://certiverify-backend-dpaz.onrender.com/api/certificates",
         {
           headers: {
             Authorization: `Bearer ${token}`
@@ -507,7 +507,7 @@ function DashboardPage() {
 
     try {
       const response = await fetch(
-        `http://localhost:5000/api/revoke/${selectedCertificate.certificateId}`,
+        `https://certiverify-backend-dpaz.onrender.com/api/revoke/${selectedCertificate.certificateId}`,
         {
           method: "POST",
           headers: {
@@ -841,7 +841,7 @@ function AdminDashboardPage() {
         institutionResponse
       ] = await Promise.all([
         fetch(
-          "http://localhost:5000/api/certificates",
+          "https://certiverify-backend-dpaz.onrender.com/api/certificates",
           {
             headers: {
               Authorization: `Bearer ${token}`
@@ -849,7 +849,7 @@ function AdminDashboardPage() {
           }
         ),
         fetch(
-          "http://localhost:5000/api/certificates/institutions",
+          "https://certiverify-backend-dpaz.onrender.com/api/certificates/institutions",
           {
             headers: {
               Authorization: `Bearer ${token}`
@@ -1283,7 +1283,7 @@ function CertificateDetailsPage() {
 
       try {
         const response = await fetch(
-          `http://localhost:5000/api/certificates/${certificateId}`,
+          `https://certiverify-backend-dpaz.onrender.com/api/certificates/${certificateId}`,
           {
             headers: {
               Authorization: `Bearer ${token}`
@@ -1327,7 +1327,7 @@ function CertificateDetailsPage() {
 
     try {
       const response = await fetch(
-        `http://localhost:5000/api/certificates/download/${certificateId}`,
+        `https://certiverify-backend-dpaz.onrender.com/api/certificates/download/${certificateId}`,
         {
           headers: {
             Authorization: `Bearer ${token}`
@@ -1576,7 +1576,7 @@ function IssueCertificatePage() {
 
     try {
       const response = await fetch(
-        "http://localhost:5000/api/certificates/issue",
+        "https://certiverify-backend-dpaz.onrender.com/api/certificates/issue",
         {
           method: "POST",
           headers: {
