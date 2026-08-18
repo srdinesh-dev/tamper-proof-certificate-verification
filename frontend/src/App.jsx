@@ -8,6 +8,7 @@ import {
 } from "react-router-dom"
 import { useEffect, useMemo, useState } from "react"
 import "./App.css"
+import certifyLogo from "./assets/certify-logo.png"
 
 function VerificationPage() {
   const [searchParams] = useSearchParams()
@@ -58,10 +59,12 @@ function VerificationPage() {
     <div className="app">
       <header className="navbar">
         <div className="brand">
-          <div className="brand-icon">✓</div>
+          <div className="brand-icon">
+  <img src={certifyLogo} alt="CertiFy logo" />
+</div>
 
           <div>
-            <h1>CertiVerify</h1>
+            <h1>CertiFy</h1>
             <span>Tamper-Proof Verification</span>
           </div>
         </div>
@@ -547,23 +550,27 @@ function DashboardPage() {
   }
 
   return (
-    <div className="dashboard-page">
-      <header className="dashboard-navbar">
-        <div>
-          <h1>CertiVerify</h1>
-          <span>Institution Dashboard</span>
-        </div>
+   <div className="dashboard-page">
+  <header className="dashboard-navbar">
+    <div className="dashboard-brand">
+      <img src={certifyLogo} alt="CertiFy logo" />
 
-        <div className="dashboard-user">
-          <span>
-            {user?.name || "Institution"}
-          </span>
+      <div>
+        <h1>CertiFy</h1>
+        <span>Institution Dashboard</span>
+      </div>
+    </div>
 
-          <button onClick={logout}>
-            Logout
-          </button>
-        </div>
-      </header>
+    <div className="dashboard-user">
+      <span>
+        {user?.name || "Institution"}
+      </span>
+
+      <button onClick={logout}>
+        Logout
+      </button>
+    </div>
+  </header>
 
       <main className="dashboard-content">
         <section className="dashboard-heading">
@@ -967,22 +974,26 @@ function AdminDashboardPage() {
 
   return (
     <div className="dashboard-page">
-      <header className="dashboard-navbar">
-        <div>
-          <h1>CertiVerify</h1>
-          <span>Admin Dashboard</span>
-        </div>
+  <header className="dashboard-navbar">
+    <div className="dashboard-brand">
+      <img src={certifyLogo} alt="CertiFy logo" />
 
-        <div className="dashboard-user">
-          <span>
-            {user?.name || "Admin"}
-          </span>
+      <div>
+        <h1>CertiFy</h1>
+        <span>Admin Dashboard</span>
+      </div>
+    </div>
 
-          <button onClick={logout}>
-            Logout
-          </button>
-        </div>
-      </header>
+    <div className="dashboard-user">
+      <span>
+        {user?.name || "Admin"}
+      </span>
+
+      <button onClick={logout}>
+        Logout
+      </button>
+    </div>
+  </header>
 
       <main className="dashboard-content">
         <section className="dashboard-heading">
@@ -1041,7 +1052,7 @@ function AdminDashboardPage() {
               <h3>Registered Institutions</h3>
 
               <p>
-                Institutions using CertiVerify
+                Institutions using CertiFy
               </p>
             </div>
           </div>

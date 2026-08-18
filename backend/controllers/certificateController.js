@@ -1,4 +1,5 @@
 const crypto = require("crypto")
+const path = require("path")
 const QRCode = require("qrcode")
 const PDFDocument = require("pdfkit")
 
@@ -16,8 +17,13 @@ const generateHash = (data) => {
 const generateCertificatePdf = async (certificate) => {
     const certificateId = certificate.certificateId
 
-   const verificationUrl =
-    `https://tamper-proof-certificate-verificati.vercel.app/?certificateId=${certificateId}`;
+    const verificationUrl =
+        `https://tamper-proof-certificate-verificati.vercel.app/?certificateId=${certificateId}`
+
+    const logoPath = path.join(
+        __dirname,
+        "../assets/certify-logo.png"
+    )
 
     const qrCodeDataUrl = await QRCode.toDataURL(
         verificationUrl,
@@ -116,18 +122,16 @@ const generateCertificatePdf = async (certificate) => {
             .lineWidth(1)
             .stroke(gold)
 
-        doc.font("Helvetica-Bold")
-            .fontSize(19)
-            .fillColor(navy)
-            .text(
-                "C",
-                pageWidth / 2 - 8,
-                84,
-                {
-                    width: 16,
-                    align: "center"
-                }
-            )
+        doc.image(
+            logoPath,
+            pageWidth / 2 - 20,
+            75,
+            {
+                fit: [40, 40],
+                align: "center",
+                valign: "center"
+            }
+        )
 
         doc.font("Helvetica-Bold")
             .fontSize(10)
@@ -470,21 +474,8 @@ const issueCertificate = async (req, res) => {
                 previousHash
             })
 
-       const verificationUrl =
-    `https://tamper-proof-certificate-verificati.vercel.app/?certificateId=${certificateId}`;
-
-        const qrCodeDataUrl =
-            await QRCode.toDataURL(
-                verificationUrl,
-                {
-                    width: 300,
-                    margin: 2,
-                    color: {
-                        dark: "#172033",
-                        light: "#FFFFFF"
-                    }
-                }
-            )
+        const verificationUrl =
+            `https://tamper-proof-certificate-verificati.vercel.app/?certificateId=${certificateId}`
 
         const pdfBuffer =
             await generateCertificatePdf(
